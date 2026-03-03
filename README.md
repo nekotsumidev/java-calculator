@@ -13,7 +13,7 @@ This project was created while studying Java and practicing basic programming co
 
 ## Technologies
 
-- Java
+- Java (JDK 21)
 
 ## How to Run
 
@@ -34,3 +34,4 @@ https://www.youtube.com/watch?v=wesoM-O1cLE
 ## Author
 
 GitHub: https://github.com/nekotsumidev
+
