@@ -12,49 +12,56 @@ public class Main {
         boolean continues;
 
         do {
-            System.out.println("Type value one: ");
+            System.out.println("Enter first number: ");
             valueOne = scanner.nextDouble();
 
-            System.out.println("Type operator( +, -, /, *): ");
+            System.out.println("Enter an operator ( +, -, /, *, ^): ");
             operator = scanner.next();
 
-            System.out.println("Type value two: ");
+            System.out.println("Enter second number: ");
             valueTwo = scanner.nextDouble();
+            scanner.nextLine();
 
             System.out.println("Result: " + realizeCalc(valueOne, valueTwo, operator));
 
-            continues = verifyNewOperation();
+            continues = verifyNewOperation(scanner);
         }while (continues);
     }
 
-    public static boolean verifyNewOperation() {
-        Scanner sc = new Scanner(System.in);
+    public static boolean verifyNewOperation(Scanner sc) {
 
-        System.out.println("Want to realize a new operation? (y/n): ");
+        System.out.println("Do you want to perform another operation? (y/n): ");
         return !sc.nextLine().toLowerCase(Locale.ROOT).equals("n");
     }
 
-    public static Double realizeCalc(Double valueOne, Double valueTwo, String operator) {
-        double AnswerCalc = 0.0;
+    public static double realizeCalc(Double valueOne, Double valueTwo, String operator) {
+        double result = 0.0;
 
         switch (operator){
             case "+":
-                AnswerCalc = valueOne + valueTwo;
+                result = valueOne + valueTwo;
                 break;
             case "-":
-                AnswerCalc = valueOne - valueTwo;
+                result = valueOne - valueTwo;
                 break;
             case "/":
-                AnswerCalc = valueOne / valueTwo;
+                if (valueTwo == 0) {
+                    System.out.println("Cannot divide by zero");
+                    return 0;
+                }
+                result = valueOne / valueTwo;
                 break;
             case "*":
-                AnswerCalc = valueOne * valueTwo;
+                result = valueOne * valueTwo;
+                break;
+            case "^":
+                result = Math.pow(valueOne, valueTwo);
                 break;
 
             default:
-                System.out.println("Invalid operation: ");
+                System.out.println("Invalid operator");
         }
 
-        return AnswerCalc;
+        return result;
     }
 }
